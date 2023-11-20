@@ -1,0 +1,10 @@
+{{ config(materialized="table") }}
+
+SELECT
+    CUSTOMER_ID,
+    CUSTOMER_UNIQUE_ID,
+    CUSTOMER_ZIP_CODE_PREFIX,
+    UPPER(TRIM(CUSTOMER_CITY)) AS CUSTOMER_CITY,
+    UPPER(TRIM(CUSTOMER_STATE)) AS CUSTOMER_STATE
+from {{ source("ecommerce_raw", "customers") }}
+WHERE CUSTOMER_UNIQUE_ID IS NOT NULL
