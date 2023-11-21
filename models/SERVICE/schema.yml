@@ -1,6 +1,63 @@
 version: 2
 
 models:
-  - name: dim_customers
+  - name: av_delivery_time
     config:
       schema: service_data_ar
+    columns:
+      - name: order_id
+        description: Id de la compra
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Id del consumidor
+        tests:
+          - not_null
+      - name: order_status
+        description: Estado de la orden
+        tests:
+          - not_null
+      - name: order_purchase_timestamp 
+        description: fecha en el que se realiza a compra
+        tests:
+          - not_null
+      - name: approval_days
+        description: días promedio de aprovación del pedido
+        tests:
+          - not_null
+      - name: shipping_days 
+        description: días promedio de entrega al flete del pedido
+        tests:
+          - not_null
+      - name: delivery_days
+        description: días promedio de entrega al cliente del pedido
+        tests:
+          - not_null
+      - name: av_real_time
+        description: días promedio real de entrega al cliente del pedido
+        tests:
+          - not_null
+      - name: estimated_time
+        description: días estimados de entrega al cliente del pedido
+        tests:
+          - not_null
+        
+  - name: delivery_location
+    config:
+      schema: trusted_data_ar
+    columns:
+      - name: customer_id
+        description: prefijo del codigo postal
+      - name: customer_unique_id
+        description: latitud
+      - name: zip_code_prefix
+        description: longitud
+      - name: city
+        description: ciudad
+      - name: state
+        description: provincia
+      - name: lat
+        description: latitud de ubicación
+      - name: lng
+        description: longitud de ubicación

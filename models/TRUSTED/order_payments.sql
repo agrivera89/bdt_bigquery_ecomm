@@ -1,6 +1,6 @@
 {{ config(materialized="table") }}
 
-SELECT *,
+SELECT
  ORDER_ID,
  PAYMENT_SEQUENTIAL,
  UPPER(TRIM(PAYMENT_TYPE)) AS PAYMENT_TYPE,
