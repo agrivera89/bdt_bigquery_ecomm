@@ -42,7 +42,7 @@ models:
         description: días estimados de entrega al cliente del pedido
         tests:
           - not_null
-        
+
   - name: delivery_location
     config:
       schema: trusted_data_ar
@@ -60,4 +60,25 @@ models:
       - name: lat
         description: latitud de ubicación
       - name: lng
+        description: longitud de ubicación  
+  
+  - name: delivery_locations
+    config:
+      schema: trusted_data_ar
+    columns:
+      - name: customer_id
+        description: prefijo del codigo postal
+      - name: customer_unique_id
+        description: latitud
+      - name: zip_code_prefix
+        description: longitud
+      - name: city
+        description: ciudad
+      - name: state
+        description: provincia
+      - name: lat
+        description: latitud de ubicación
+      - name: lng
         description: longitud de ubicación
+      - name: value_count
+        description: numeros repetidos
