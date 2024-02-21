@@ -1,0 +1,100 @@
+version: 2
+
+models:
+  - name: delivery_table
+    config:
+      schema: service_data_ar
+    columns:
+      - name: order_id
+        description: Id de la compra
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: Id del consumidor
+        tests:
+          - not_null
+      - name: order_status
+        description: Estado de la orden
+        tests:
+          - not_null
+      - name: order_purchase_timestamp 
+        description: fecha en el que se realiza a compra
+        tests:
+          - not_null
+      - name: sales
+        description: total venta por número de orden
+        tests:
+          - not_null        
+      - name: approval_days
+        description: días promedio de aprovación del pedido
+        tests:
+          - not_null
+      - name: shipping_days 
+        description: días promedio de entrega al flete del pedido
+        tests:
+          - not_null
+      - name: delivery_days
+        description: días promedio de entrega al cliente del pedido
+        tests:
+          - not_null
+      - name: av_real_time
+        description: días promedio real de entrega al cliente del pedido
+        tests:
+          - not_null
+      - name: estimated_time
+        description: días estimados de entrega al cliente del pedido
+        tests:
+          - not_null
+
+  - name: location_table
+    config:
+      schema: service_data_ar
+    columns:
+      - name: customer_id
+        description: prefijo del codigo postal
+      - name: customer_unique_id
+        description: latitud
+      - name: zip_code_prefix
+        description: longitud
+      - name: city
+        description: ciudad
+      - name: state
+        description: provincia
+      - name: lat
+        description: latitud de ubicación
+      - name: lng
+        description: longitud de ubicación
+      - name: value_count
+        description: numeros repetidos
+  
+
+  - name: product_table
+    config:
+      schema: service_data_ar
+    columns:
+      - name: ORDER_ID
+        description: N° orden del pedido
+      - name: ORDER_ITEM_ID
+        description: N° del item de la orden
+      - name: PRODUCT_ID
+        description: N° del producto 
+      - name: PRODUCT_CATEGORY_NAME
+        description: Categoría de producto
+      - name: SELLER_ID
+        description: N° de identificación del vendedor
+      - name: SHIPPING_LIMIT_DATE
+        description: Fecha limite de embarque del pedido
+      - name: PRICE
+        description: Precio del item
+      - name: FREIGHT_VALUE
+        description: Previo del flete
+
+  - name: delivery_stage_table
+    config:
+      schema: service_data_ar
+    columns:
+      - name: ORDER_ID
+        description: N° orden del pedido
+      - name: delivery_stage
+        description: Momento de la entrega del pedido
